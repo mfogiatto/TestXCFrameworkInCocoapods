@@ -1,0 +1,282 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SecLibFramework
+import SystemConfiguration.CaptiveNetwork
+import CommonCrypto
+import CoreData
+import CoreTelephony
+import Foundation
+import NotificationCenter
+@_exported import SecLibFramework
+import Security
+import Swift
+import SystemConfiguration
+import UIKit
+import WebKit
+import os.log
+import os
+extension Bundle {
+  public class var secLib: Foundation.Bundle {
+    get
+  }
+  public var appShortVersion: Swift.String {
+    get
+  }
+  public var appVersion: Swift.String {
+    get
+  }
+  public var applicationName: Swift.String {
+    get
+  }
+}
+extension NSObject {
+  public var className: Swift.String {
+    get
+  }
+}
+public typealias MemoryUsage = (used: Swift.UInt64, total: Swift.UInt64)
+public typealias StorageUsage = (used: Swift.Int64, total: Swift.Int64)
+public typealias DeviceData = (name: Swift.String, osVersion: Swift.String, battery: Swift.String)
+public enum ReachabilityError : Swift.Error {
+  case FailedToCreateWithAddress(Darwin.sockaddr_in)
+  case FailedToCreateWithHostname(Swift.String)
+  case unableToSetCallback
+  case unableToSetDispatchQueue
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let reachabilityChangedNotification: Foundation.NSNotification.Name
+extension NSNotification.Name {
+  public static let reachabilityChanged: Foundation.Notification.Name
+}
+public class Reachability {
+  public typealias NetworkReachable = (SecLibFramework.Reachability) -> Swift.Void
+  public typealias NetworkUnreachable = (SecLibFramework.Reachability) -> Swift.Void
+  public enum Connection : Swift.CustomStringConvertible {
+    case none, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: SecLibFramework.Reachability.Connection, b: SecLibFramework.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: SecLibFramework.Reachability.NetworkReachable?
+  public var whenUnreachable: SecLibFramework.Reachability.NetworkUnreachable?
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: SecLibFramework.Reachability.Connection {
+    get
+  }
+  public var connection: SecLibFramework.Reachability.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability)
+  convenience public init?(hostname: Swift.String)
+  convenience public init?()
+  @objc deinit
+}
+extension Reachability {
+  public func startNotifier() throws
+  public func stopNotifier()
+  public var isReachable: Swift.Bool {
+    get
+  }
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(EventModel) public class EventModel : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension EventModel {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<SecLibFramework.EventModel>
+  @objc @NSManaged dynamic public var eventCategory: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var payload: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var timestamp: Foundation.Date? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var user: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var transactionId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var userID: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+extension UIDevice {
+  public func getCPUName() -> Swift.String
+  public func getCPUSpeed() -> Swift.String
+  public func getMachine() -> Swift.String
+}
+public struct Event : Swift.Codable {
+  public init()
+  public init(eventType: Swift.String, eventElement: Swift.String, pageName: Swift.String, eventDescription: Swift.String, traceTimestamp: Foundation.TimeInterval, deviceOrientation: Swift.String, traceTransactionId: Swift.String, traceSessionId: Swift.String, netType: Swift.String, netBand: Swift.String, subpageName: Swift.String, appState: Swift.String)
+  public func getEventType() -> Swift.String
+  public func getEventElement() -> Swift.String
+  public func getPageName() -> Swift.String
+  public func getEventDescription() -> Swift.String
+  public func getTraceTimestamp() -> Foundation.TimeInterval
+  public func getDeviceOrientation() -> Swift.String
+  public func getTraceTransactionId() -> Swift.String
+  public func getTraceSessionId() -> Swift.String
+  public func getNetType() -> Swift.String
+  public func getNetBand() -> Swift.String
+  public func getSubpageName() -> Swift.String
+  public func getAppState() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(CrashModel) public class CrashModel : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension CrashModel {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<SecLibFramework.CrashModel>
+  @objc @NSManaged dynamic public var crashReport: ObjectiveC.NSObject? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var crashId: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@_hasMissingDesignatedInitializers public class SettingsManager {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class SecLib : ObjectiveC.NSObject {
+  public static var shared: SecLibFramework.SecLib
+  @objc public var setTraceIdKey: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc public func setPackageName(packageName: Swift.String)
+  @objc public func setScreenName(screenName: Swift.String)
+  @objc public var turnSMAPIOnOff: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public func setup(withEnvironment environment: Swift.String, crashHandling: Swift.Bool)
+  public func setUserID(_ userID: Swift.String?) -> Swift.String?
+  public func logComponents(_ components: [Swift.String : Swift.String]) -> Swift.Bool
+  @objc public func flush()
+  @objc public func appendSession(for url: Foundation.URL) -> Foundation.URL
+  @objc public var configureNetworkMonitoring: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public func startTimer(eventElement: Swift.String, uniqueCode: Swift.Int, currentEpoch: Swift.Double)
+  @objc public func stopTimer(uniqueCode: Swift.Int, currentEpoch: Swift.Double)
+  @objc public func setUpTableViewCapture()
+  @available(iOS 13.0, *)
+  @objc public func setUpUIScene()
+  @objc public func setVerbose(flag: Swift.Bool)
+  @objc public func setEnvironment(environment: Swift.String?)
+  @objc public func getUserId() -> Swift.String
+  @discardableResult
+  public func logCustomEvent(withEventElement eventElement: Swift.String, eventDescription action: Swift.String, onPage pageName: Swift.String, onSubPage subPage: Swift.String, withCustomJSONFields customJSON: Foundation.NSDictionary? = nil) -> SecLibFramework.Event
+  @discardableResult
+  @available(iOS, deprecated: 3.0.4, renamed: "logCustomEvent")
+  public func logEvent(withEventType eventType: Swift.String, eventElement: Swift.String, eventDescription: Swift.String, onPage pageName: Swift.String, onSubPage subPage: Swift.String, withCustomJSON customJSON: Foundation.NSDictionary? = nil) -> SecLibFramework.Event?
+  @objc public func getSecLibHeaderObject() -> SecLibFramework.EventHeader
+  @objc public func getSMAPIStatus() -> Swift.Bool
+  @objc public func logExceptionEvent(eventElement: Swift.String, exception: Swift.String)
+  public func requestMetrics(withURL url: Swift.String = "", method: SecLibFramework.HTTPMethod = .unknown, requestHeaders: [Swift.String : Swift.String]? = nil) -> SecLibFramework.SLRequestMetrics
+  @objc public func throtleLocalEndPoint(endPoint: [Swift.String]?, bundleID: Swift.String?)
+  @objc deinit
+}
+extension UICollectionView {
+  @objc dynamic open func setDelegate(delegate: UIKit.UICollectionViewDelegate?)
+  @objc dynamic open func customCollectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+}
+@_hasMissingDesignatedInitializers public class SLRequestMetrics {
+  public func logResponse(statusCode: Swift.Int, responseHeaders: [Swift.String : Swift.String]?, errorDescription: Swift.String? = nil)
+  @objc deinit
+}
+extension UITableView {
+  @objc dynamic open func nsh_set(delegate: UIKit.UITableViewDelegate?)
+  @objc dynamic open func custom_tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+public enum HTTPMethod : Swift.String, Swift.Codable {
+  case get
+  case post
+  case put
+  case patch
+  case delete
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIViewController {
+  @objc dynamic open func customViewDidLoad()
+  @objc dynamic open func customViewDidAppear(animated: Swift.Bool)
+  @objc dynamic open func customViewWillDisappear(animated: Swift.Bool)
+  @objc dynamic open func customDismiss(animated flag: Swift.Bool, completion: (() -> Swift.Void)?)
+}
+extension Data {
+  public func sha256() -> Swift.String
+}
+extension String {
+  public func sha256() -> Swift.String
+}
+extension JSONDecoder {
+  public static func decode<T>(_ json: [Swift.String : Any], to type: T.Type) throws -> T where T : Swift.Decodable, T : Swift.Encodable
+  public static func decode<T>(_ data: Foundation.Data, to type: T.Type) throws -> T where T : Swift.Decodable, T : Swift.Encodable
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EventHeader : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public func getContentType() -> Swift.String
+  public func getTraceSource() -> Swift.String
+  public func getTraceNetworkBearer() -> Swift.String
+  public func getTraceSourceVersion() -> Swift.String
+  public func getTraceSubjectId() -> Swift.String
+  public func getTraceSubjectRegion() -> Swift.String
+  public func getInstallId() -> Swift.String
+  public func getClientVersion() -> Swift.String
+  public func getTracePlatform() -> Swift.String
+  public func getTraceosversion() -> Swift.String
+  public func getTraceosname() -> Swift.String
+  public func getTraceApplicationName() -> Swift.String
+  public func getTraceUseragent() -> Swift.String
+  public func getTraceMCC() -> Swift.String
+  public func getTraceMNC() -> Swift.String
+  public func getTraceLocale() -> Swift.String
+  public func getTraceWidth() -> Swift.String
+  public func getTraceHeight() -> Swift.String
+  public func getCarrierName() -> Swift.String
+  @objc deinit
+}
+extension SecLibFramework.Reachability.Connection : Swift.Equatable {}
+extension SecLibFramework.Reachability.Connection : Swift.Hashable {}
+extension SecLibFramework.HTTPMethod : Swift.Equatable {}
+extension SecLibFramework.HTTPMethod : Swift.Hashable {}
+extension SecLibFramework.HTTPMethod : Swift.RawRepresentable {}
