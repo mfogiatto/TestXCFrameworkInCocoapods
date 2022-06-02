@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
                   LICENSE
                 }
   spec.author             = { "Matheus Fogiatto" => "matheus.fogiatto@vodafone.com" }
-  spec.source       = { :git => "https://github;l.com/mfogiatto/TestXCFrameworkInCocoapods.git", :tag => "1.0.1" }
+  spec.source       = { :git => "https://github.com/mfogiatto/TestXCFrameworkInCocoapods.git", :tag => "1.0.1" }
   spec.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLib.xcframework"
   spec.platform = :ios
     spec.swift_version = "4.2"
