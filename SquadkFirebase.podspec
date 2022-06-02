@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "SquadkFirebase"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "A brief description of SquadkFirebase project."
 
   spec.description  = <<-DESC
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
                 }
   spec.author             = { "Matheus Fogiatto" => "matheus.fogiatto@vodafone.com" }
   spec.source       = { :git => "https://github.com/mfogiatto/TestXCFrameworkInCocoapods.git", :tag => "1.0.0" }
-  spec.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLib.xcframework", 
+  spec.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLib.xcframework", "IdtmLib.xcframework"
   spec.platform = :ios
     spec.swift_version = "4.2"
     spec.ios.deployment_target  = '12.0'
