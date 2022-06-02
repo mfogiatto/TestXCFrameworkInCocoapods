@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "Matheus Fogiatto" => "matheus.fogiatto@vodafone.com" }
   spec.source       = { :git => "https://github.com/mfogiatto/TestXCFrameworkInCocoapods.git", :tag => "1.0.1" }
   spec.static_framework = true
-  spec.ios.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLibSecLibFramework.xcframework", "IdtmLib.xcframework"
+  spec.ios.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLibFramework.xcframework", "IdtmLib.xcframework"
 spec.pod_target_xcconfig   = { 'VALID_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     spec.user_target_xcconfig  = { 'VALID_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.platform = :ios
