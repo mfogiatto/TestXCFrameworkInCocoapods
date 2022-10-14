@@ -15,11 +15,18 @@ Pod::Spec.new do |spec|
                   LICENSE
                 }
   spec.author             = { "Matheus Fogiatto" => "matheus.fogiatto@vodafone.com" }
-  spec.source       = { :git => "https://github.com/mfogiatto/TestXCFrameworkInCocoapods.git", :tag => "1.0.1" }
+  spec.source       = { :git => "https://github.com/mfogiatto/TestXCFrameworkInCocoapods.git", :tag => "1.0.3" }
   spec.static_framework = true
-  spec.ios.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLibFramework.xcframework", "IdtmLib.xcframework"
+  spec.ios.vendored_frameworks = "FirebaseInstanceID.xcframework", "SecLibFramework.xcframework", "IdtmLib.xcframework", "VPartnerLib.xcframework"
   spec.platform = :ios
     spec.swift_version = "4.2"
     spec.ios.deployment_target  = '12.0'
-   spec.dependency 'Firebase'
+    spec.dependency 'ReactiveCocoa'
+    spec.dependency 'ReactiveSwift', '~> 6.1'
+    spec.dependency 'ASN1Decoder'
+    spec.dependency 'PhoneNumberKit', '~> 3.3'
+    spec.dependency 'Firebase/Core'
+    spec.dependency 'Firebase/Installations'
+    spec.dependency 'Firebase/Messaging'
+    spec.dependency 'JumioMobileSDK', '~>3.7.1'
 end
